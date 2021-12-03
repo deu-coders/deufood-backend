@@ -1,0 +1,32 @@
+version: "3"
+services:
+  django:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./media:/media
+      - .:/app
+    ports:
+      - 8000:8000
+    environment:
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      - DJANGO_ALLOWED_ORIGINS=${DJANGO_ALLOWED_ORIGINS}
+      - MARIADB_HOST=mariadb
+      - MARIADB_PORT=3306
+      - MARIADB_USER=deufood
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_DATABASE=deufood
+
+  mariadb:
+    image: mariadb
+    restart: unless-stopped
+    volumes:
+      - mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_RANDOM_ROOT_PASSWORD=true
+      - MARIADB_USER=deufood
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_DATABASE=deufood
+
+volumes:
+  mariadb:
