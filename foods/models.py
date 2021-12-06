@@ -35,6 +35,9 @@ class Food(models.Model):
 
 class FoodReview(models.Model):
 
+    class Meta:
+        ordering = ['-created_at']
+
     id = models.AutoField(primary_key=True)
     food = models.ForeignKey(Food, related_name='reviews', on_delete=models.PROTECT)
     author = models.ForeignKey(get_user_model(), related_name='food_reviews', on_delete=models.CASCADE)

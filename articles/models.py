@@ -4,6 +4,10 @@ from deufood.utils import random_filename
 
 
 class Article(models.Model):
+
+    class Meta:
+        ordering = ['-created_at']
+
     id = models.AutoField(primary_key=True)
     author = models.ForeignKey(get_user_model(), related_name='articles', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
