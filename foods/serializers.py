@@ -23,6 +23,9 @@ class FoodSerializer(serializers.ModelSerializer):
 
     permission_classes = [IsAuthenticatedOrReadOnly]
     thumbnail = serializers.ImageField(required=False, allow_empty_file=True)
+
+
+class FoodListSerializer(FoodSerializer):
     reviews = serializers.SerializerMethodField()
 
     def get_reviews(self, obj):
@@ -45,4 +48,4 @@ class FoodCategorySerializer(serializers.ModelSerializer):
 
 class FoodCategoryRetreiveSerializer(FoodCategorySerializer):
 
-    foods = FoodSerializer(many=True, read_only=True)
+    foods = FoodListSerializer(many=True, read_only=True)

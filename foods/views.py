@@ -1,6 +1,7 @@
-from rest_framework import viewsets 
-from .serializers import FoodCategoryRetreiveSerializer, FoodCategorySerializer, FoodRetreiveSerializer, FoodSerializer, FoodReviewSerializer
-from .models import FoodCategory, Food, FoodReview
+from django.conf import settings
+from rest_framework import viewsets, mixins
+from .serializers import FoodCategoryRetreiveSerializer, FoodCategorySerializer, FoodListSerializer, FoodRetreiveSerializer, FoodSerializer, FoodReviewSerializer
+from .models import FoodCategory, Food, FoodReview, RateTypes
 
 
 class FoodCategoryViewSet(viewsets.ModelViewSet):
@@ -22,6 +23,9 @@ class FoodViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return FoodRetreiveSerializer
+
+        if self.action == 'list':
+            return FoodListSerializer
 
         return super(FoodViewSet, self).get_serializer_class()
     
