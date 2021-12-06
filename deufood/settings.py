@@ -40,8 +40,8 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 DEBUG = os.getenv('DJANGO_DEBUG') or False
 ALLOWED_HOSTS = list(filter(len, map(lambda host: host.strip(), (os.getenv('DJANGO_ALLOWED_HOSTS') or '').split(','))))
 
-
-print(ALLOWED_HOSTS)
+print('\tDEBUG =', DEBUG)
+print('\tALLOWED_HOSTS =', ALLOWED_HOSTS)
 
 
 # Application definition
@@ -115,8 +115,12 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = 'deufood.wsgi.application'
+
+
 CORS_ALLOWED_ORIGINS = list(filter(len, map(lambda host: host.strip(), (os.getenv('DJANGO_ALLOWED_ORIGINS') or '').split(','))))
 CORS_ALLOW_CREDENTIALS = False
+
+print('\tCORS_ALLOWED_ORIGINS =', CORS_ALLOWED_ORIGINS)
 
 
 # Database
