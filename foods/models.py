@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from enumchoicefield import ChoiceEnum, EnumChoiceField
-from .utils import random_filename
+from deufood.utils import random_filename
 
 
 class RateTypes(ChoiceEnum):

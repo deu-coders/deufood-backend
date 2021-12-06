@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from deufood.utils import random_filename
 
 
 class Article(models.Model):
@@ -7,7 +8,7 @@ class Article(models.Model):
     author = models.ForeignKey(get_user_model(), related_name='articles', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     title = models.CharField(max_length=200, null=False, blank=False)
-    thumbnail = models.ImageField()
+    thumbnail = models.ImageField(upload_to=random_filename)
     contents = models.TextField()
 
 

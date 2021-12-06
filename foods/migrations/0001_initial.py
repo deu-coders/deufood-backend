@@ -5,7 +5,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 import enumchoicefield.fields
 import foods.models
-import foods.utils
+import deufood.utils
 
 
 class Migration(migrations.Migration):
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('description', models.TextField(max_length=2000)),
                 ('price', models.IntegerField()),
-                ('thumbnail', models.ImageField(upload_to=foods.utils.random_filename)),
+                ('thumbnail', models.ImageField(upload_to=deufood.utils.random_filename)),
             ],
         ),
         migrations.CreateModel(
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('name', models.CharField(max_length=40, primary_key=True, serialize=False)),
                 ('description', models.CharField(max_length=200)),
-                ('thumbnail', models.ImageField(upload_to=foods.utils.random_filename)),
+                ('thumbnail', models.ImageField(upload_to=deufood.utils.random_filename)),
             ],
         ),
         migrations.CreateModel(
