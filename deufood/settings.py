@@ -199,4 +199,4 @@ ACCOUNT_EMAIL_VERIFICATION = None
 
 
 # dj-rest-auth configurations (https://dj-rest-auth.readthedocs.io/en/latest/configuration.html)
-REST_SESSION_LOGIN = False
+REST_SESSION_LOGIN = True
